@@ -1,5 +1,6 @@
 # Dart bindings for opusfile
 
+### MacOS
 ```
 git clone https://github.com/xiph/opus.git
 cd opus
@@ -15,4 +16,12 @@ cmake .. -DOPUS_BUILD_PROGRAMS=OFF -DOPUS_BUILD_TESTING=OFF -DOPUS_BUILD_SHARED_
 cmake --build .
 ```
 
+### iOS
+```
+cd opusfile
+mkdir build && cd build
+cmake .. -G Xcode -DCMAKE_TOOLCHAIN_FILE=/Users/nickfisher/Documents/polyvox/flutter/opusfile_dart/native/ios.toolchain.cmake  -DPLATFORM=OS64
+cmake --build . --config Release
+cp Release-iphoneos/libogg.a ~/Documents/polyvox/flutter/opusfile_dart/native/lib/ios/
+```
 
