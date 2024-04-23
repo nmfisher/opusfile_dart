@@ -23,12 +23,13 @@ extern "C"
         }
          
         ogg_int64_t duration = op_pcm_total(of, -1);
+        
         opus_int64 size = size = op_raw_total(of, -1);
 
-        unsigned char* out = (unsigned char*)malloc(duration * 2);
+        unsigned char* out = (unsigned char*)malloc(duration * 2 * 2); // [duration] samples * 2 channels * 2 bytes (int16)
         int written = 0;
 
-        *outLength = duration;
+        *outLength = (duration * 2);
 
         ogg_int64_t pcm_offset;
         ogg_int64_t nsamples;
@@ -60,6 +61,7 @@ extern "C"
             }
             else if (ret < 0)
             {
+                std::cout << "EXIT FAIL" << std::endl;
                 ret = EXIT_FAILURE;
                 break;
             }
@@ -107,6 +109,8 @@ extern "C"
             pcm_offset = next_pcm_offset;
             if (ret <= 0)
             {
+                                std::cout << "SUCCESS" << std::endl;
+
                 ret = EXIT_SUCCESS;
                 break;
             }
@@ -119,6 +123,7 @@ extern "C"
             fprintf(stderr, "\nWARNING: "
                             "Number of output samples does not match declared file duration.\n");
         }
+        std::cout << "wrote " << written << std::endl;
         op_free(of);
         return out;
     }
