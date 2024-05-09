@@ -23,6 +23,8 @@ void main(List<String> args) async {
         '-std=c++17',
         '-framework',
         'Foundation',
+        if(platform == "ios")
+        "-mios-version-min=8.0"
         "-force_load",
         "$libDir/libopusfile.a",
         "-force_load",
