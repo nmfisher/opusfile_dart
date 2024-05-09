@@ -4,3 +4,5 @@ native/lib/ios/libogg.a filter=lfs diff=lfs merge=lfs -text
 native/lib/macos/libogg.a filter=lfs diff=lfs merge=lfs -text
 native/lib/macos/libopus.a filter=lfs diff=lfs merge=lfs -text
 native/lib/macos/libopusfile.a filter=lfs diff=lfs merge=lfs -text
+native/lib/ios/libopusfile.a filter=lfs diff=lfs merge=lfs -text
+native/lib/ios/libopus.a filter=lfs diff=lfs merge=lfs -text
