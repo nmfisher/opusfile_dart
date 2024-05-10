@@ -14,6 +14,7 @@ extern "C"
         of = op_open_memory((const unsigned char *)encoded, length, &ret);
         if (of == NULL)
         {
+            std::cout << "Failed to open file" << std::endl;
             return nullptr;
         }
 
