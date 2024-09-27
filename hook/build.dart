@@ -11,7 +11,17 @@ void main(List<String> args) async {
     final packageName = config.packageName;
     var platform = config.targetOS.toString().toLowerCase();
     var libDir = "${config.packageRoot.toFilePath()}/native/lib/$platform/";
-    
+
+    if (config.targetOS == OS.android) {
+      switch (config.targetArchitecture) {
+        case Architecture.arm64:
+          libDir += "/arm64-v8a/";
+        case Architecture.x64:
+          libDir += "/x86_64/";
+        default:
+      }
+    }
+
     var flags = [
       "-v",
       '-std=c++17',
@@ -31,9 +41,7 @@ void main(List<String> args) async {
       flags.addAll("-framework Foundation -mios-version-min=8.0".split(" "));
     } else if (platform == "macos") {
       flags.addAll("-framework Foundation".split(" "));
-    } else if (platform == "android") {
-      
-    }
+    } else if (platform == "android") {}
     final cbuilder = CBuilder.library(
       name: packageName,
       language: Language.cpp,

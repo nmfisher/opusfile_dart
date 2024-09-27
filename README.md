@@ -16,7 +16,7 @@ cmake .. -DOPUS_BUILD_PROGRAMS=OFF -DOPUS_BUILD_TESTING=OFF -DOPUS_BUILD_SHARED_
 cmake --build .
 ```
 
-### iOS
+### Android/iOS
 
 Set OPUSFILE_DART_DIR to the path of the opusfile_dart root directory.
 
